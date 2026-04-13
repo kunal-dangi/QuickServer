@@ -34,12 +34,6 @@ export default function Navbar() {
                             <History className="h-4 w-4" />
                             <span className="hidden sm:inline">Order History</span>
                         </Link>
-                        <Link
-                            to="/admin"
-                            className="flex items-center space-x-1 px-4 py-2 rounded-lg transition-colors font-medium hover:bg-zinc-100 hover:text-zinc-900 text-zinc-600 border border-zinc-200"
-                        >
-                            <span className="hidden sm:inline font-bold">Admin Panel</span>
-                        </Link>
                     </div>
                 </div>
             </div>
