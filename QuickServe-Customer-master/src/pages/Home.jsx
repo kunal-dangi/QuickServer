@@ -39,7 +39,13 @@ const FOOD_ITEMS = [
 ];
 
 export default function Home() {
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState(() => {
+        try {
+            return JSON.parse(localStorage.getItem('quickserve_cart')) || [];
+        } catch (e) {
+            return [];
+        }
+    });
     const [activeCategory, setActiveCategory] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
     const [isCartOpen, setIsCartOpen] = useState(false);
@@ -131,6 +137,10 @@ export default function Home() {
         acc[item.category].push(item);
         return acc;
     }, {});
+
+    useEffect(() => {
+        localStorage.setItem('quickserve_cart', JSON.stringify(cartItems));
+    }, [cartItems]);
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {

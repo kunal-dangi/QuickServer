@@ -24,29 +24,40 @@ export default function History() {
     }, []);
 
     return (
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-8 tracking-tight">
-                Your <span className="text-blue-400">Past Orders</span>
-            </h1>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+            <div className="mb-14">
+                <h1 className="text-4xl sm:text-5xl font-black text-zinc-900 tracking-tighter mb-4">
+                    Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-600">Past Orders</span>
+                </h1>
+                <p className="text-zinc-500 text-lg font-medium max-w-lg leading-relaxed">
+                    View your history, track order status, and satisfy those recurring cravings.
+                </p>
+            </div>
 
             {orders.length === 0 ? (
-                <div className="bg-white/5 backdrop-blur-md rounded-3xl p-12 text-center border border-white/10 shadow-2xl">
-                    <div className="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <PackageX className="w-12 h-12 text-blue-300/50" />
+                <div className="bg-white border border-zinc-100 rounded-[3rem] p-16 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden">
+                    <div className="w-48 h-48 mx-auto mb-8 relative">
+                        <div className="absolute inset-0 bg-orange-100 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                        <img 
+                            src="/assets/empty-history.png" 
+                            alt="Empty Basket" 
+                            className="w-full h-full object-contain relative z-10 drop-shadow-2xl animate-bounce-slow"
+                            style={{ animation: 'bounce 3s infinite ease-in-out' }}
+                        />
                     </div>
-                    <h2 className="text-2xl font-bold text-white mb-3">No orders placed yet</h2>
-                    <p className="text-blue-200/70 mb-8 max-w-md mx-auto">
-                        It looks like you haven't ordered anything yet. Browse our delicious menu and place your first order!
+                    <h2 className="text-3xl font-black text-zinc-900 mb-4 tracking-tight">Your history is hungry!</h2>
+                    <p className="text-zinc-500 mb-10 max-w-sm mx-auto font-medium leading-relaxed">
+                        It looks like your order history is a bit empty. Let's head over to the menu and find something delicious to fill it up.
                     </p>
                     <Link
                         to="/"
-                        className="inline-flex py-3 px-8 bg-blue-600/80 hover:bg-blue-500 text-white font-bold rounded-xl shadow-lg transition-transform hover:scale-105"
+                        className="inline-flex py-4 px-10 bg-gradient-to-r from-orange-500 to-rose-600 hover:from-orange-600 hover:to-rose-700 text-white font-bold rounded-2xl shadow-xl shadow-orange-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
                     >
-                        Browse Menu
+                        Explore Menu
                     </Link>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {orders.map(order => (
                         <OrderCard key={order.id} order={order} />
                     ))}
